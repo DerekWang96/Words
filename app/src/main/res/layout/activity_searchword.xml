@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/custom_topbar_search_word" />
+    <include layout="@layout/custom_searchwordbox" />
+
+    <TextView
+        android:id="@+id/tv_word_no_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="没有结果!"
+        android:textAlignment="center"
+        android:paddingTop="10dp"/>
+
+    <!--单词内容-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <!--拼写、音标、释义-->
+        <LinearLayout
+            android:id="@+id/tv_word_result"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            android:orientation="vertical">
+
+            <!--拼写-->
+            <TextView
+                android:id="@+id/tv_word_spelling"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="quantitive"
+                android:textStyle="bold"
+                android:textSize="24dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textAlignment="center"/>
+
+            <!--音标-->
+            <TextView
+                android:id="@+id/tv_word_soundmark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="['kwɔntitiv]"
+                android:textSize="16dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:textAlignment="center"/>
+
+            <!--发音按钮-->
+            <ImageButton
+                android:id="@+id/btn_word_speaker"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@mipmap/btn_speaker"
+                android:layout_gravity="center"/>
+
+            <!--释义-->
+            <TextView
+                android:id="@+id/tv_word_meaning"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="adj. 定量的；数量的"
+                android:textSize="18dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:textAlignment="center"/>
+        </LinearLayout>
+
+        <!--例句-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5">
+
+            <TextView
+                android:id="@+id/tv_word_example"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="30dp"
+                android:textSize="16dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:text="Analytic hierarchy process (AHP) is a assessing method which combines qualitative analysis with quantitive analysis.
+层次分析法是一种定性与定量相结合的有效的评定方法。"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_add_word_to_list"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/add_word_to_list" />
+
+</LinearLayout>

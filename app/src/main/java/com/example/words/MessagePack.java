@@ -14,7 +14,7 @@ public class MessagePack implements Serializable {
     public Boolean isChanged = false;
     public Vector<String> strPack  = new Vector<String>();
     public Vector<Boolean> booleanResult = new Vector<Boolean>();
-    public List<wordbook> wordbookList = new ArrayList<wordbook>();
+    public List<Wordbook> wordbookList = new ArrayList<Wordbook>();
     public String taskType;
     public MessagePack(){}
 
@@ -50,11 +50,11 @@ public class MessagePack implements Serializable {
     	this.booleanResult.add(b);
     }
     
-    public void setListwordbook(List<wordbook> wb){
+    public void setListwordbook(List<Wordbook> wb){
     	this.wordbookList = wb; 
     }
 
-    public List<wordbook> getListwordbook(){
+    public List<Wordbook> getListwordbook(){
     	return wordbookList;
     }
 
@@ -86,11 +86,11 @@ public class MessagePack implements Serializable {
         this.taskType = taskType;
     }
 
-    public List<wordbook> getWordbookList() {
+    public List<Wordbook> getWordbookList() {
         return wordbookList;
     }
 
-    public void setWordbookList(List<wordbook> wordbookList) {
+    public void setWordbookList(List<Wordbook> wordbookList) {
         this.wordbookList = wordbookList;
     }
 }

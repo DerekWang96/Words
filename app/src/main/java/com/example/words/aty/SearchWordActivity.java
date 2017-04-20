@@ -3,7 +3,6 @@ package com.example.words.aty;
 import android.app.Activity;
 import com.example.words.R;
 
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -13,7 +12,6 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import db.ACID;
-import db.ImportDB;
 import db.Word;
 
 
@@ -48,7 +46,7 @@ public class SearchWordActivity extends Activity implements View.OnClickListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_search_word);
+        setContentView(R.layout.activity_searchword);
 
         initViews();//初始化界面
         initEvents();//初始化事件

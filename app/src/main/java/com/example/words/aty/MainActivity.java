@@ -24,42 +24,41 @@ import java.util.List;
 public class MainActivity extends FragmentActivity implements View.OnClickListener {
 
     /*成员变量--------------------------------------------------------*/
-    //banner所需包含的成员变量
-
-    private ViewPager homeViewPager;//声明ViewPager
-    private FragmentPagerAdapter homeViewPagerAdapter;//适配器
-    private List<Fragment> homeViewPagerFragments;//装载Fragment的集合
-
-    //三个tab对应的布局
-    private LinearLayout tabBooks;
-    private LinearLayout tabHome;
-    private LinearLayout tabPersonal;
-
-    //三个Tab对应的ImageButton
-    private ImageButton imgBtnBooks;
-    private ImageButton imgBtnHome;
-    private ImageButton imgBtnPersonal;
-
+    private ViewPager myViewPager;                              //vp
+    private FragmentPagerAdapter myViewPagerAdapter;            //vp适配器
+    private List<Fragment> myViewPagerFragments;                //vp存放的Fragment集合
+    private LinearLayout tabBooks, tabHome, tabPersonal;        //Fragments对应布局
+    private ImageButton imgBtnBooks, imgBtnHome, imgBtnPersonal;//Fragments对应按钮
 
     /*相关函数--------------------------------------------------------*/
-    //onCreate函数
+    /*@重写onCreate()方法
+     * 方法名：onCreate(Bundle savedInstanceState)
+     * 功    能：创建活动
+     * 参    数：Bundle savedInstanceState - ?
+     * 返回值：无
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_main);
-        initViews();//初始化控件
-        initEvents();//初始化事件
-        initDatas();//初始化数据
+        requestWindowFeature(Window.FEATURE_NO_TITLE);  //去掉头部
+        setContentView(R.layout.activity_main);         //设置layotu
+        initViews();    //初始化控件
+        initEvents();   //初始化事件
+        initDatas();    //初始化数据
 
-        //初始化完成之后，先将三个button置浅灰色，然后默认选择tab1(即主页)，同时将对应的图标高亮
+        //初始化完成之后，先将三个button置浅灰色，然后默认选择tab1(即主页)，对应的图标高亮
         resetImgs();
         selectTab(1);
     }
 
-    //初始化控件
+    /*
+     * 方法名：initViews()
+     * 功    能：初始化控件
+     * 参    数：无
+     * 返回值：无
+     */
     private void initViews() {
-        homeViewPager = (ViewPager) findViewById(R.id.id_viewpager);
+        myViewPager = (ViewPager) findViewById(R.id.id_viewpager);
 
         tabBooks = (LinearLayout) findViewById(R.id.id_tab_books);
         tabHome = (LinearLayout) findViewById(R.id.id_tab_home);
@@ -70,7 +69,12 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         imgBtnPersonal = (ImageButton) findViewById(R.id.id_tab_personal_img);
     }
 
-    //初始化事件
+    /*
+     * 方法名：initEvents()
+     * 功    能：初始化事件(点击事件等)
+     * 参    数：无
+     * 返回值：无
+     */
     private void initEvents() {
         //设置底栏三个tab的点击事件
         tabBooks.setOnClickListener(this);
@@ -78,47 +82,56 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         tabPersonal.setOnClickListener(this);
     }
 
-    //初始化数据
+    /*
+     * 方法名：initDatas()
+     * 功    能：初始化数据(包括适配器的初始化)
+     * 参    数：无
+     * 返回值：无
+     */
     private void initDatas() {
-        homeViewPagerFragments = new ArrayList<>();
+        myViewPagerFragments = new ArrayList<>();
         //将各个Fragment加入集合中
-        homeViewPagerFragments.add(new BooksFragment());
-        homeViewPagerFragments.add(new HomeFragment());
-        homeViewPagerFragments.add(new PersonalFragment());
+        myViewPagerFragments.add(new BooksFragment());
+        myViewPagerFragments.add(new HomeFragment());
+        myViewPagerFragments.add(new PersonalFragment());
 
-        //设置主页切换ViewPager的适配器（利用前面声明的Fragment组）
-        homeViewPagerAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
-            @Override
+        //初始化vp适配器 - myViewPagerAdapter
+        myViewPagerAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
+            @Override //获取页面i
             public Fragment getItem(int position) {
-                return homeViewPagerFragments.get(position);//从集合中获取对应位置的Fragment
+                return myViewPagerFragments.get(position);
             }
 
-            @Override
+            @Override //获取页面总数
             public int getCount() {
-                return homeViewPagerFragments.size();//获取集合中Fragment的总数
+                return myViewPagerFragments.size();
             }
         };
-        homeViewPager.setAdapter(homeViewPagerAdapter);//设置适配器
+        //设置适配器
+        myViewPager.setAdapter(myViewPagerAdapter);
 
-        //设置homeViewPager的切换监听
-        homeViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-
-            @Override//页面选中事件
+        //设置vp的切换监听
+        myViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override //页面选中事件
             public void onPageSelected(int position) {
-                homeViewPager.setCurrentItem(position);
-                resetImgs();//重置底栏图标
-                selectTab(position);//选择一个fragment显示
+                resetImgs();            //重置底栏图标
+                selectTab(position);    //选择一个页面显示
             }
 
-            @Override//页面滚动事件
+            @Override //页面滚动事件
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
 
-            @Override//页面滚动状态改变事件
+            @Override //页面滚动状态改变事件
             public void onPageScrollStateChanged(int state) {}
         });
     }
 
-    //onClick监听
+    /*@重写onClick()方法
+     * 方法名：onClick(View v)
+     * 功    能：处理按钮点击事件
+     * 参    数：View v - 按钮的View
+     * 返回值：无
+     */
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -139,7 +152,12 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         }
     }
 
-    //选择底栏Tab对应的页面
+    /*
+     * 方法名：selectTab(int i)
+     * 功    能：选择底栏Tab对应的页面
+     * 参    数：int i - 所选择页面的index
+     * 返回值：无
+     */
     private void selectTab(int i) {
         //根据点击的Tab设置对应的ImageButton为主题色
         switch (i) {
@@ -154,16 +172,24 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 break;
         }
         //设置当前点击的Tab所对应的Fragment为Fragment数组里的第i项
-        homeViewPager.setCurrentItem(i);
+        myViewPager.setCurrentItem(i);
     }
 
-    //将三个Button设置为浅灰色
+    /*
+     * 方法名：resetImgs()
+     * 功    能：将三个Button设置为浅灰色
+     * 参    数：无
+     * 返回值：无
+     */
     private void resetImgs() {
         imgBtnBooks.setImageResource(R.mipmap.tab_book_normal);
         imgBtnHome.setImageResource(R.mipmap.tab_home_normal);
         imgBtnPersonal.setImageResource(R.mipmap.tab_personal_normal);
     }
 
+    /*
+     * @重写aty生命周期中的其它几个函数
+     */
     @Override
     protected void onStart() {
         super.onStart();

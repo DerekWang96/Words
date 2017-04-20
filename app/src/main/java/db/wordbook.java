@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
 import java.sql.Blob;
-public class wordbook implements Serializable {
+public class Wordbook implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String name;
    	private String author;

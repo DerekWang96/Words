@@ -47,7 +47,7 @@
         </activity>
 
         <!--查单词本Activity-->
-        <activity android:name=".aty.MoreBookActivity">
+        <activity android:name=".aty.SearchBookActivity">
 
         </activity>
     </application>
