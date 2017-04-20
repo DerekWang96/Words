@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/custom_topbar_more_book" />
+    <include layout="@layout/custom_searchbox2" />
+
+    <!--热门标签模块-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:orientation="vertical">
+        <!--热门标签titleText-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="热门标签" />
+        <!--热门标签按钮group-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp" >
+            <Button
+                android:id="@+id/btn_searchbook2_CET4"
+                android:layout_width="30dp"
+                android:layout_height="20dp"
+                android:background="@drawable/test_btn_shape1"
+                android:text="四级"
+                android:textSize="9dp"
+                android:gravity="center"
+                android:textColor="@color/colorTextDark"
+                android:layout_marginRight="10dp"/>
+
+            <Button
+                android:id="@+id/btn_searchbook2_CET6"
+                android:layout_width="30dp"
+                android:layout_height="20dp"
+                android:background="@drawable/test_btn_shape1"
+                android:text="六级"
+                android:textSize="9dp"
+                android:gravity="center"
+                android:textColor="@color/colorTextDark"
+                android:layout_marginRight="10dp"/>
+
+            <Button
+                android:id="@+id/btn_searchbook2_KY"
+                android:layout_width="30dp"
+                android:layout_height="20dp"
+                android:background="@drawable/test_btn_shape1"
+                android:text="考研"
+                android:textSize="9dp"
+                android:gravity="center"
+                android:textColor="@color/colorTextDark"
+                android:layout_marginRight="10dp"/>
+
+            <Button
+                android:id="@+id/btn_searchbook2_TOEFL"
+                android:layout_width="30dp"
+                android:layout_height="20dp"
+                android:background="@drawable/test_btn_shape1"
+                android:text="托福"
+                android:textSize="9dp"
+                android:gravity="center"
+                android:textColor="@color/colorTextDark"
+                android:layout_marginRight="10dp"/>
+
+            <Button
+                android:id="@+id/btn_searchbook2_IELTS"
+                android:layout_width="30dp"
+                android:layout_height="20dp"
+                android:background="@drawable/test_btn_shape1"
+                android:text="雅思"
+                android:textSize="9dp"
+                android:gravity="center"
+                android:textColor="@color/colorTextDark"
+                android:layout_marginRight="10dp"/>
+
+            <Button
+                android:id="@+id/btn_searchbook2_GRE"
+                android:layout_width="30dp"
+                android:layout_height="20dp"
+                android:background="@drawable/test_btn_shape1"
+                android:text="GRE"
+                android:textSize="9dp"
+                android:gravity="center"
+                android:textColor="@color/colorTextDark"
+                android:layout_marginRight="10dp"/>
+
+            <Button
+                android:id="@+id/btn_searchbook2_GMAT"
+                android:layout_width="30dp"
+                android:layout_height="20dp"
+                android:background="@drawable/test_btn_shape1"
+                android:text="GMAT"
+                android:textSize="9dp"
+                android:gravity="center"
+                android:textColor="@color/colorTextDark"
+                android:layout_marginRight="10dp"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="400dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+            <ListView
+                android:id="@+id/lv_searchbook_result"
+                android:layout_width="match_parent"
+                android:layout_height="400dp">
+            </ListView>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

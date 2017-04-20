@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Antenna配色方案-->
+    <color name="colorPrimary">#fde700</color>
+    <color name="colorPrimaryLight">#f8f8f8</color>
+    <color name="colorPrimaryDark">#222222</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorText">#ffffff</color>
+    <color name="colorTextDark">#333333</color>
+    <color name="colorTextHint">#999999</color>
+
+    <color name="white">#ffffff</color>
+</resources>

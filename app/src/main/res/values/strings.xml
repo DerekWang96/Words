@@ -1,0 +1,41 @@
+<resources>
+
+    <string name="app_name">Words</string>
+    <!--LoginActivity-->
+    <string name="login_hint_1">用户名</string>
+    <string name="login_hint_2">密码</string>
+    <string name="login_button">登录</string>
+    <string name="network_disconnect">网络未连接</string>
+    <string name="login_user_notfound">用户不存在！</string>
+    <string name="login_wrong_pass">密码错误！</string>
+    <string name="login_success">登录成功！</string>
+    <string name="login_forget_pass">忘记密码？</string>
+    <string name="login_register">注册</string>
+    <!--RegisterActivity-->
+    <string name="rgt_hint_1">输入用户名</string>
+    <string name="rgt_user_already_exists">该用户名已存在！</string>
+    <string name="rgt_username_unavailable">× 用户名不可用</string>
+    <string name="rgt_username_available">√ 用户名可用</string>
+    <string name="rgt_pass_uncomplete">请输入密码！</string>
+    <string name="rgt_pass_uncompatible">两次输入密码不一致！</string>
+    <string name="rgt_hint_2">输入密码</string>
+    <string name="rgt_hint_3">再次输入密码</string>
+    <string name="rgt_button">确认注册</string>
+    <string name="rgt_success">注册成功！</string>
+    <!--主界面-->
+    <string name="main_btmbar_books">单词本广场</string>
+    <string name="main_btmbar_home">主页</string>
+    <string name="main_btmbar_personal">个人中心</string>
+    <!--搜索单词-->
+    <string name="search_word_hint">搜索单词</string>
+    <string name="add_word_to_list">添加到我的单词本</string>
+    <!--顶栏标题-->
+    <string name="custom_topbar_title_appname">WORDS</string>
+    <string name="custom_topbar_title_searchword">查词</string>
+    <string name="custom_topbar_title_booksquare">单词本广场</string>
+    <string name="custom_topbar_title_morebook">更多单词本</string>
+    <!--搜索单词本-->
+    <string name="search_book_hint">搜索单词本</string>
+    <!--更多单词本-->
+
+</resources>

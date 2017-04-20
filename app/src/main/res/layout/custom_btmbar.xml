@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="55dp"
+    android:gravity="center"
+    android:background="@color/colorTextDark" >
+
+    //btmbar中的tab_books
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:id="@+id/id_tab_books"
+        android:gravity="center"
+        android:orientation="vertical">
+        <ImageButton
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:id="@+id/id_tab_books_img"
+            android:clickable="false"
+            android:src="@mipmap/tab_book"
+            android:background="#00000000"
+            android:scaleType="fitCenter"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/colorText"
+            android:text="@string/main_btmbar_books"/>
+    </LinearLayout>
+
+    //btmbar中的tab_home
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:id="@+id/id_tab_home"
+        android:gravity="center"
+        android:orientation="vertical">
+        <ImageButton
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:id="@+id/id_tab_home_img"
+            android:clickable="false"
+            android:src="@mipmap/tab_home"
+            android:background="#00000000"
+            android:scaleType="fitCenter"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/colorText"
+            android:text="@string/main_btmbar_home"/>
+    </LinearLayout>
+
+    //btmbar中的tab_personal
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:id="@+id/id_tab_personal"
+        android:gravity="center"
+        android:orientation="vertical">
+        <ImageButton
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:id="@+id/id_tab_personal_img"
+            android:clickable="false"
+            android:src="@mipmap/tab_personal"
+            android:background="#00000000"
+            android:scaleType="fitCenter"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/colorText"
+            android:text="@string/main_btmbar_personal"/>
+    </LinearLayout>
+
+</LinearLayout>

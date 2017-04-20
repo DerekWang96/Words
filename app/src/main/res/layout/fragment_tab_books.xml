@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/fragment_tab_books">
+
+    <include layout="@layout/custom_topbar_frag_books" />
+    <include layout="@layout/custom_searchbox2_static"/>
+
+    <!--热门标签模块-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:orientation="vertical">
+        <!--热门标签titleText-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="热门标签" />
+        <!--热门标签按钮group-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp" >
+            <Button
+                android:id="@+id/btn_searchbook_CET4"
+                android:layout_width="30dp"
+                android:layout_height="20dp"
+                android:background="@drawable/test_btn_shape1"
+                android:text="四级"
+                android:textSize="9dp"
+                android:gravity="center"
+                android:textColor="@color/colorTextDark"
+                android:layout_marginRight="10dp"/>
+
+            <Button
+                android:id="@+id/btn_searchbook_CET6"
+                android:layout_width="30dp"
+                android:layout_height="20dp"
+                android:background="@drawable/test_btn_shape1"
+                android:text="六级"
+                android:textSize="9dp"
+                android:gravity="center"
+                android:textColor="@color/colorTextDark"
+                android:layout_marginRight="10dp"/>
+
+            <Button
+                android:id="@+id/btn_searchbook_KY"
+                android:layout_width="30dp"
+                android:layout_height="20dp"
+                android:background="@drawable/test_btn_shape1"
+                android:text="考研"
+                android:textSize="9dp"
+                android:gravity="center"
+                android:textColor="@color/colorTextDark"
+                android:layout_marginRight="10dp"/>
+
+            <Button
+                android:id="@+id/btn_searchbook_TOEFL"
+                android:layout_width="30dp"
+                android:layout_height="20dp"
+                android:background="@drawable/test_btn_shape1"
+                android:text="托福"
+                android:textSize="9dp"
+                android:gravity="center"
+                android:textColor="@color/colorTextDark"
+                android:layout_marginRight="10dp"/>
+
+            <Button
+                android:id="@+id/btn_searchbook_IELTS"
+                android:layout_width="30dp"
+                android:layout_height="20dp"
+                android:background="@drawable/test_btn_shape1"
+                android:text="雅思"
+                android:textSize="9dp"
+                android:gravity="center"
+                android:textColor="@color/colorTextDark"
+                android:layout_marginRight="10dp"/>
+
+            <Button
+                android:id="@+id/btn_searchbook_GRE"
+                android:layout_width="30dp"
+                android:layout_height="20dp"
+                android:background="@drawable/test_btn_shape1"
+                android:text="GRE"
+                android:textSize="9dp"
+                android:gravity="center"
+                android:textColor="@color/colorTextDark"
+                android:layout_marginRight="10dp"/>
+
+            <Button
+                android:id="@+id/btn_searchbook_GMAT"
+                android:layout_width="30dp"
+                android:layout_height="20dp"
+                android:background="@drawable/test_btn_shape1"
+                android:text="GMAT"
+                android:textSize="9dp"
+                android:gravity="center"
+                android:textColor="@color/colorTextDark"
+                android:layout_marginRight="10dp"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <!--推荐单词本模块-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!--热门单词本：备考单词本top3-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+
+                <!--Title-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@mipmap/cloud_yellow"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="备考"
+                        android:textColor="@color/colorTextDark"
+                        android:layout_marginLeft="5dp"
+                        android:layout_gravity="center"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"/>
+                    <ImageButton
+                        android:id="@+id/btn_morebook_beikao"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@mipmap/arrow_right"
+                        android:layout_gravity="end"/>
+                </LinearLayout>
+
+                <!--单词书-->
+                <GridView xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/gv_book_class1"
+                    android:columnWidth="100dp"
+                    android:numColumns="3"
+                    android:verticalSpacing="2dp"
+                    android:horizontalSpacing="2dp"
+                    android:stretchMode="columnWidth"
+                    android:gravity="center"/>
+
+            </LinearLayout>
+
+            <!--热门单词本：趣味单词本top3-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+
+                <!--Title-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@mipmap/cloud_yellow"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="趣味"
+                        android:textColor="@color/colorTextDark"
+                        android:layout_marginLeft="5dp"
+                        android:layout_gravity="center"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"/>
+                    <ImageButton
+                        android:id="@+id/btn_morebook_quwei"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@mipmap/arrow_right"
+                        android:layout_gravity="end"/>
+                </LinearLayout>
+
+                <!--单词书-->
+                <GridView xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/gv_book_class2"
+                    android:columnWidth="100dp"
+                    android:numColumns="3"
+                    android:verticalSpacing="2dp"
+                    android:horizontalSpacing="2dp"
+                    android:stretchMode="columnWidth"
+                    android:gravity="center"/>
+
+            </LinearLayout>
+
+            <!--热门单词本：精品单词本top3-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+
+                <!--Title-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@mipmap/cloud_yellow"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="精品"
+                        android:textColor="@color/colorTextDark"
+                        android:layout_marginLeft="5dp"
+                        android:layout_gravity="center"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"/>
+                    <ImageButton
+                        android:id="@+id/btn_morebook_jingpin"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@mipmap/arrow_right"
+                        android:layout_gravity="end"/>
+                </LinearLayout>
+
+                <!--单词书-->
+                <GridView xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/gv_book_class3"
+                    android:columnWidth="100dp"
+                    android:numColumns="3"
+                    android:verticalSpacing="2dp"
+                    android:horizontalSpacing="2dp"
+                    android:stretchMode="columnWidth"
+                    android:gravity="center"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
