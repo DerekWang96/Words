@@ -11,7 +11,6 @@ public class Wordbook implements Serializable {
 	private int downnumber;
 	private int collectnumber;
 	private int wordnumber;
-	private String state;
 	private String type;
 	public int getCollectnumber() {
 		return collectnumber;
@@ -55,7 +54,5 @@ public class Wordbook implements Serializable {
 	public void setWordnumber(int wordnumber) {
 		this.wordnumber = wordnumber;
 	}
-	public String getstate(){return state;}
-	public void setState(String state){this.state = state;}
 }
 

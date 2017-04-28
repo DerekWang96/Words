@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="55dp">
     <ImageButton
-        android:id="@+id/btn_return_morebook"
+        android:id="@+id/btn_return_bookdetail"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginLeft="10dp"
@@ -19,7 +19,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="@string/custom_topbar_title_morebook"
+        android:text="@string/custom_topbar_title_bookdetail"
         android:textColor="@color/colorTextDark"
         android:textSize="18dp"
         android:textStyle="bold"/>

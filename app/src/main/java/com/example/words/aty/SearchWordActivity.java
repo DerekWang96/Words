@@ -54,7 +54,7 @@ public class SearchWordActivity extends Activity implements View.OnClickListener
     }
 
     public void initViews() {
-        btnReturn = (ImageButton) findViewById(R.id.btn_return);
+        btnReturn = (ImageButton) findViewById(R.id.btn_return_searchbook);
 
         etInputWord = (EditText) findViewById(R.id.et_input_word);
         btnSearchWord = (ImageButton) findViewById(R.id.btn_search_word);
@@ -97,7 +97,7 @@ public class SearchWordActivity extends Activity implements View.OnClickListener
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_return://返回按钮
+            case R.id.btn_return_searchbook://返回按钮
             {
                 finish();
                 break;

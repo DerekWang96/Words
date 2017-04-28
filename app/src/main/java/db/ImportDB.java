@@ -1,4 +1,5 @@
 package db;
+
 import java.io.FileOutputStream;
 import java.io.File;
 import java.io.IOException;
@@ -26,16 +27,19 @@ public class ImportDB {
     void setDatabaseFilePath(){
     	DB_FILEPATH = DB_PATH + "/" + DB_NAME + ".db";
     }
-	public SQLiteDatabase openDatabase(boolean newdb) {
+	public SQLiteDatabase openDatabase() {
 		System.out.println("filePath:" + DB_FILEPATH);
 		File jhPath = new File(DB_FILEPATH);
 		if (jhPath.exists()) {
+			Log.i(DB_NAME, "存在数据库");
 			return SQLiteDatabase.openOrCreateDatabase(jhPath, null);
-		} else if (newdb=true){
+		} else {
 			File path = new File(DB_PATH);
 			Log.i(DB_NAME, "pathStr=" + path);
 			if (path.mkdir()) {
+				Log.i(DB_NAME, "创建成功");
 			} else {
+				Log.i(DB_NAME, "创建失败");
 			}
 			try {
 				AssetManager am = context.getAssets();
@@ -56,7 +60,7 @@ public class ImportDB {
 				e.printStackTrace();
 				return null;
 			}
-			return openDatabase(true);
-		}else return  null;
+			return openDatabase();
+		}
 	}
 }

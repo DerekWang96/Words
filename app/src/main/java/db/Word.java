@@ -16,7 +16,7 @@ public class Word implements Serializable {
     public String spelling;//拼写
     public String soundmark;//音标
     public String meaning;//释义
-    public byte[] pronounce;//发音
+    public String pronounce;//发音
     public String example;//例子
     public Word(){
 
@@ -37,11 +37,11 @@ public class Word implements Serializable {
         return meaning;
     }
 
-    public void setPronounce(byte[] pronounce) {
+    public void setPronounce(String pronounce) {
         this.pronounce = pronounce;
     }
 
-    public byte[] getPronounce() {
+    public String getPronounce() {
         return pronounce;
     }
 

@@ -7,26 +7,32 @@ import android.os.AsyncTask;
 import java.io.DataInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 public class ExDataTask extends AsyncTask<MessagePack, Void, MessagePack> {
 
     private Context context;
-
+    public MessagePack messagePack;
 
     @Override
     protected MessagePack doInBackground(MessagePack... params) {
+
         Socket socket = null;
         try {
             String s;
             int i;
             int length = 0;
             byte[] inputByte = new byte[1024];
-//            socket = new Socket("10.0.3.2", 10001);
             socket = new Socket("223.3.107.94",10001);
             System.out.println("socket:"+socket);
+            ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
             DataInputStream dis = new DataInputStream(socket.getInputStream());
             FileOutputStream fos = context.openFileOutput("test.txt", Context.MODE_PRIVATE);
+
+            oos.writeObject(messagePack);
+            oos.flush();
+//          --------------------------
             s = dis.readUTF();
             i = dis.readInt();
             System.out.println("读到的数据:"+s);
@@ -75,5 +81,12 @@ public class ExDataTask extends AsyncTask<MessagePack, Void, MessagePack> {
     @Override
     protected void onCancelled() {
         super.onCancelled();
+    }
+    public MessagePack getMessagePack() {
+        return messagePack;
+    }
+
+    public void setMessagePack(MessagePack messagePack) {
+        this.messagePack = messagePack;
     }
 }
