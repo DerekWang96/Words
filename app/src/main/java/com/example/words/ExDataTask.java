@@ -23,7 +23,7 @@ public class ExDataTask extends AsyncTask<MessagePack, Void, MessagePack> {
             int length = 0;
             byte[] inputByte = new byte[1024];
 //            socket = new Socket("10.0.3.2", 10001);
-            socket = new Socket("223.3.122.242",10001);
+            socket = new Socket("223.3.107.94",10001);
             System.out.println("socket:"+socket);
             DataInputStream dis = new DataInputStream(socket.getInputStream());
             FileOutputStream fos = context.openFileOutput("test.txt", Context.MODE_PRIVATE);

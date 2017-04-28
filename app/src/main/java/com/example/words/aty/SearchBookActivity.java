@@ -107,14 +107,14 @@ public class SearchBookActivity extends Activity implements View.OnClickListener
         //初始化数据
         Resources res=getResources();
         Bitmap bitmap= BitmapFactory.decodeResource(res, R.drawable.defualtcover);
-        for (int i = 0; i < 10; i++) {
-            bookTitles.add("title");
-            bookAuthors.add("搞事组");
-            bookCovers.add(bitmap);
-            bookWordNumbers.add(0);
-            bookFavNumbers.add(0);
-            bookDownNumbers.add(0);
-        }
+//        for (int i = 0; i < 10; i++) {
+//            bookTitles.add("title");
+//            bookAuthors.add("搞事组");
+//            bookCovers.add(bitmap);
+//            bookWordNumbers.add(0);
+//            bookFavNumbers.add(0);
+//            bookDownNumbers.add(0);
+//        }
 
     }
 
@@ -297,30 +297,57 @@ public class SearchBookActivity extends Activity implements View.OnClickListener
         @Override
         public void afterTextChanged(Editable s) {
             temp = s.toString();
+            System.out.println("改变的String："+s);
             ExMsgTask MTask = new ExMsgTask();
             MessagePack mp = new MessagePack();
-            mp.strPack.add(temp);
-            mp.setOrderType("0003");
-            mp.setTaskType("0002");
-            MTask.setMessagePack(mp);
-            MTask.setDelegate(SearchBookActivity.this);
-            MTask.execute();
+            if(!temp.equals("")){
+                clearResults();
+                mp.strPack.add(temp);
+                System.out.println(mp.strPack.get(0));
+                mp.setTaskType("0002");
+                mp.setOrderType("0003");
+                MTask.setMessagePack(mp);
+                MTask.setDelegate(SearchBookActivity.this);
+                MTask.execute();
+            }
+            else {
+                System.out.println("empty string.");
+            }
+
         }
     };
     @Override//回调函数
     public void processFinish(MessagePack outputPack) {
         List<Wordbook> bookList = outputPack.getListwordbook();
-        for(int i=0;i<bookList.size();i++) {
-            bookTitles.set(i,bookList.get(i).getName());
-            bookAuthors.set(i,bookList.get(i).getAuthor());
-            bookCovers.set(i,Bytes2Bitmap(bookList.get(i).getPicture()));
-            bookWordNumbers.set(i,bookList.get(i).getWordnumber());
-            bookFavNumbers.set(i,bookList.get(i).getCollectnumber());
-            bookDownNumbers.set(i,bookList.get(i).getDownnumber());
+        System.out.println("bookList size:"+bookList.size());
+        Resources res=getResources();
+        Bitmap bitmap= BitmapFactory.decodeResource(res, R.drawable.defualtcover);
+        for (int i = 0; i < bookList.size(); i++) {
+            bookTitles.add("title");
+            bookAuthors.add("搞事组");
+            bookCovers.add(bitmap);
+            bookWordNumbers.add(0);
+            bookFavNumbers.add(0);
+            bookDownNumbers.add(0);
+            bookTitles.set(0,bookList.get(0).getName());
+            bookAuthors.set(0,bookList.get(0).getAuthor());
+            bookCovers.set(0,Bytes2Bitmap(bookList.get(0).getPicture()));
+            bookWordNumbers.set(0,bookList.get(0).getWordnumber());
+            bookFavNumbers.set(0,bookList.get(0).getCollectnumber());
+            bookDownNumbers.set(0,bookList.get(0).getDownnumber());
         }
-//        listItemAdapter.notifyDataSetChanged();
+        listItemAdapter.notifyDataSetChanged();
         listItemAdapter = new ListItemAdapter(bookTitles,bookAuthors,bookCovers,
                 bookWordNumbers,bookFavNumbers,bookDownNumbers,this);
         lvSearchBookResult.setAdapter(listItemAdapter);
+    }
+
+    public void clearResults() {
+        bookTitles.clear();
+        bookAuthors.clear();
+        bookCovers.clear();
+        bookWordNumbers.clear();
+        bookFavNumbers.clear();
+        bookDownNumbers.clear();
     }
 }

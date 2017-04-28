@@ -6,45 +6,53 @@ import java.sql.Blob;
 public class Wordbook implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String name;
-   	private String author;
+	private String author;
 	private byte[] picture;
 	private int downnumber;
-   	private int collectnumber;
+	private int collectnumber;
 	private int wordnumber;
+	private String type;
 	public int getCollectnumber() {
-	return collectnumber;
-}
+		return collectnumber;
+	}
 	public void setCollectnumber(int collectnumber) {
-	this.collectnumber = collectnumber;
-}
+		this.collectnumber = collectnumber;
+	}
 	public int getDownnumber() {
-	return downnumber;
-}
+		return downnumber;
+	}
 	public void setDownnumber(int downnumber) {
-	this.downnumber = downnumber;
-}
+		this.downnumber = downnumber;
+	}
 	public void  setPicture(byte[] picture) {
-    this.picture=picture;
-}
+		this.picture=picture;
+	}
 	public byte[] getPicture() {
-	return picture;
-}
+		return picture;
+	}
 	public String getAuthor() {
-	return author;
-}
+		return author;
+	}
 	public void setAuthor(String author) {
-	this.author = author;
-}
+		this.author = author;
+	}
 	public String getName() {
-	return name;
-}
+		return name;
+	}
 	public void setName(String name) {
-	this.name = name;
-}
-	public void setWordnumber(int wordnumber) {
-		this.wordnumber = wordnumber;
+		this.name = name;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
 	}
 	public int getWordnumber() {
 		return wordnumber;
 	}
+	public void setWordnumber(int wordnumber) {
+		this.wordnumber = wordnumber;
+	}
 }
+
