@@ -180,6 +180,33 @@ public class SearchBookActivity extends Activity implements View.OnClickListener
         return bitmap;
     }
 
+    /*
+     * @重写aty生命周期中的其它几个函数
+     */
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 
     /*相关类--------------------------------------------------------*/
     //ListItem类

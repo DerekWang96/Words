@@ -19,10 +19,10 @@
 
         <!--MainActivity-->
         <activity android:name=".aty.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
         </activity>
 
         <!--登录Activity-->
@@ -49,6 +49,14 @@
         <!--查单词本Activity-->
         <activity android:name=".aty.SearchBookActivity">
 
+        </activity>
+
+        <!--查看单词本详细信息Activity-->
+        <activity android:name=".aty.BookDetailActivity">
+            <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
