@@ -58,6 +58,11 @@
             <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!--查看我的单词本Activity-->
+        <activity android:name=".aty.MyBooksActivity">
+
+        </activity>
     </application>
 
 </manifest>

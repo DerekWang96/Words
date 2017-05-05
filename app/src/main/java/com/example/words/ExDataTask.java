@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 
 import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -14,6 +15,9 @@ public class ExDataTask extends AsyncTask<MessagePack, Void, MessagePack> {
 
     private Context context;
     public MessagePack messagePack;
+    public String orderType;
+    public String filename;
+
 
     @Override
     protected MessagePack doInBackground(MessagePack... params) {
@@ -24,14 +28,19 @@ public class ExDataTask extends AsyncTask<MessagePack, Void, MessagePack> {
             int i;
             int length = 0;
             byte[] inputByte = new byte[1024];
-            socket = new Socket("223.3.107.94",10001);
+            socket = new Socket("223.3.155.129",10001);
             System.out.println("socket:"+socket);
-            ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
+//            ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
+            DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
             DataInputStream dis = new DataInputStream(socket.getInputStream());
-            FileOutputStream fos = context.openFileOutput("test.txt", Context.MODE_PRIVATE);
+            FileOutputStream fos = context.openFileOutput(filename, Context.MODE_PRIVATE);
 
-            oos.writeObject(messagePack);
-            oos.flush();
+            dos.writeUTF(orderType);
+            dos.writeUTF(filename);
+            dos.flush();
+
+//            oos.writeObject(messagePack);
+//            oos.flush();
 //          --------------------------
             s = dis.readUTF();
             i = dis.readInt();
@@ -88,5 +97,31 @@ public class ExDataTask extends AsyncTask<MessagePack, Void, MessagePack> {
 
     public void setMessagePack(MessagePack messagePack) {
         this.messagePack = messagePack;
+    }
+
+    public Context getContext() {
+        return context;
+    }
+
+    public void setContext(Context context) {
+        this.context = context;
+    }
+
+
+
+    public String getOrderType() {
+        return orderType;
+    }
+
+    public void setOrderType(String orderType) {
+        this.orderType = orderType;
+    }
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
     }
 }

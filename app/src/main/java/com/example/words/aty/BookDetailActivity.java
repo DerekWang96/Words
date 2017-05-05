@@ -9,6 +9,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.words.ExDataTask;
 import com.example.words.R;
 
 /**
@@ -131,6 +132,11 @@ public class BookDetailActivity extends Activity implements View.OnClickListener
                 if(d==false) {
                     btn_download.setBackgroundResource(R.mipmap.btn_download);
                     d = true;
+                    ExDataTask DTask = new ExDataTask(BookDetailActivity.this);
+                    DTask.setOrderType("0001");
+                    DTask.setFilename("test.db");
+                    DTask.execute();
+
                     //开线程修改数据库中的数据
                 } else {
                     btn_download.setBackgroundResource(R.mipmap.btn_undownload);
