@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:orientation="vertical" android:layout_width="match_parent"
+android:layout_height="wrap_content">
+
+    <!--顶栏-->
+    <include layout="@layout/custom_topbar_mybooks"/>
+
+    <LinearLayout
+        android:id="@+id/rg_mybooks"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        
+        <Button
+            android:id="@+id/btn_mybooks_tab1"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:textColor="@color/colorTextDark"
+            android:background="@color/colorPrimaryLight" />
+
+        <Button
+            android:id="@+id/btn_mybooks_tab2"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="2"
+            android:textColor="@color/colorTextDark"
+            android:background="@color/colorPrimaryLight" />
+
+        <Button
+            android:id="@+id/btn_mybooks_tab3"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="3"
+            android:textColor="@color/colorTextDark"
+            android:background="@color/colorPrimaryLight" />
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_mybooks"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/rg_mybooks">
+    </android.support.v4.view.ViewPager>
+
+</LinearLayout>

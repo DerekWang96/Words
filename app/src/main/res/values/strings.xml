@@ -35,6 +35,7 @@
     <string name="custom_topbar_title_booksquare">单词本广场</string>
     <string name="custom_topbar_title_morebook">更多单词本</string>
     <string name="custom_topbar_title_bookdetail">查看单词本</string>
+    <string name="custom_topbar_title_mybooks">我的单词本</string>
     <!--搜索单词本-->
     <string name="search_book_hint">搜索单词本</string>
     <!--更多单词本-->

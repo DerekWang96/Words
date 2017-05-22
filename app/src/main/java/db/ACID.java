@@ -72,13 +72,11 @@ public class ACID {
         }
         return wd;
     }
-
-    //从本地读取单词本，第一次第二个参数给null就可以
     public List<Word> getwordfromwb(String name,String laststring){
-        Cursor cursor;
+        Cursor cursor,cursor1;
         List<Word> list =new ArrayList<Word>();
         ImportDB importdb = new ImportDB(context,name);
-        SQLiteDatabase db = importdb.openDatabase(false);
+        SQLiteDatabase db = importdb.openDatabase(true);
         int number = 0;
         if(db==null)return null;
         if(laststring==null){
@@ -90,17 +88,24 @@ public class ACID {
                 number=cursor.getInt(cursor.getColumnIndex("rowid"));
             }while (cursor.moveToNext());
         }}
-        cursor=db.rawQuery("selet * from ? order by rowid desc limit ?,?",
+        cursor=db.rawQuery("select * from ? order by rowid desc limit ?,?",
                 new String[]{name,String.valueOf(number+1),String.valueOf(number+20)});
         if(cursor.moveToFirst()){
             do{
-                Word w = new Word();
-                w.setSpelling(cursor.getString(cursor.getColumnIndex("Word")));
-                w.setExample(cursor.getString(cursor.getColumnIndex("lx")));
-                w.setParaphrase(cursor.getString(cursor.getColumnIndex("meaning")));
-                w.setSoundmark(cursor.getString(cursor.getColumnIndex("Soundmark")));
-                w.setPronounce(cursor.getBlob(cursor.getColumnIndex("Pronounce")));
-                list.add(w);
+                cursor1=db.rawQuery("select * from words where name = ?",
+                        new String[]{cursor.getString(cursor.getColumnIndex("name"))});
+                if(cursor1.moveToFirst()){
+                do {
+                    Word w = new Word();
+                    w.setSpelling(cursor1.getString(cursor1.getColumnIndex("Word")));
+                    w.setExample(cursor1.getString(cursor1.getColumnIndex("lx")));
+                    w.setParaphrase(cursor1.getString(cursor1.getColumnIndex("meaning")));
+                    w.setSoundmark(cursor1.getString(cursor1.getColumnIndex("Soundmark")));
+                    w.setPronounce(cursor1.getBlob(cursor1.getColumnIndex("Pronounce")));
+                    list.add(w);
+                   }while (cursor1.moveToNext());
+                }
+
             }while (cursor.moveToNext());
         }
         return list;

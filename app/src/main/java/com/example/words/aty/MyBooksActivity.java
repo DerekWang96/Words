@@ -1,206 +1,185 @@
 package com.example.words.aty;
 
-import android.app.Activity;
+import android.app.Fragment;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
-
 import com.example.words.R;
-
 import java.util.ArrayList;
-import java.util.List;
 
 /**
- * Created by 6gold on 2017/5/5.
+ * Created by 6gold on 2017/5/22.
  */
 
+public class MyBooksActivity extends FragmentActivity implements View.OnClickListener {
+    private ViewPager vpMyBooks;                         //vp
+    private FragmentPagerAdapter myBooksPagerAdapter;    //pa适配器
 
-//查看单词本内的单词，ACID类里面有个getwordfromwb函数
-public class MyBooksActivity extends Activity implements View.OnClickListener {
+    //fragment切换按钮
+    private Button btnMyBooks1;
+    private Button btnMyBooks2;
+    private Button btnMyBooks3;
 
-    private ViewPager myViewPager;
-    private FragmentPagerAdapter myViewPagerAdapter;
-    private List<Fragment> myFragments;
-    private LinearLayout tab1, tab2, tab3;
-    private Button btnTab1, btnTab2, btnTab3;
+    private ImageButton btnReturn;                       //返回按钮
+
+    //装载Fragments
+    private ArrayList<android.support.v4.app.Fragment> myBooksFragments;
+
+    //三个fragment的layout
+    private LinearLayout ll_mybooks1;
+    private LinearLayout ll_mybooks2;
+    private LinearLayout ll_mybooks3;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_mybooks);
 
         initViews();
-        intiEvents();
-        intiDatas();
+        initDatas();
+        initEvents();
+
+        resetButtons();
         selectTab(0);
     }
 
-    /*
-     * 方法名：initViews()
-     * 功    能：初始化控件
-     * 参    数：无
-     * 返回值：无
-     */
-    public void initViews() {
-        myViewPager = (ViewPager) findViewById(R.id.vp_mybooks);
+    public void initViews()
+    {
+        vpMyBooks = (ViewPager) findViewById(R.id.vp_mybooks);
 
-        tab1 = (LinearLayout) findViewById(R.id.ll_fragment_mybooks1);
-        tab2 = (LinearLayout) findViewById(R.id.ll_fragment_mybooks2);
-        tab3 = (LinearLayout) findViewById(R.id.ll_fragment_mybooks3);
+        btnMyBooks1 = (Button) findViewById(R.id.btn_mybooks_tab1);
+        btnMyBooks2 = (Button) findViewById(R.id.btn_mybooks_tab2);
+        btnMyBooks3 = (Button) findViewById(R.id.btn_mybooks_tab3);
 
-        btnTab1 = (Button) findViewById(R.id.btn_mybooks_tab1);
-        btnTab2 = (Button) findViewById(R.id.btn_mybooks_tab2);
-        btnTab3 = (Button) findViewById(R.id.btn_mybooks_tab3);
+        btnReturn = (ImageButton) findViewById(R.id.btn_return_mybooks);
+
+        ll_mybooks1 = (LinearLayout) findViewById(R.id.ll_fragment_mybooks1);
+        ll_mybooks2 = (LinearLayout) findViewById(R.id.ll_fragment_mybooks2);
+        ll_mybooks3 = (LinearLayout) findViewById(R.id.ll_fragment_mybooks3);
     }
 
-    /*
-     * 方法名：initEvents()
-     * 功    能：初始化事件(点击事件等)
-     * 参    数：无
-     * 返回值：无
-     */
-    public void intiEvents() {
-        btnTab1.setOnClickListener(this);
-        btnTab2.setOnClickListener(this);
-        btnTab3.setOnClickListener(this);
+    public void initEvents()
+    {
+        //设置tab按钮点击事件
+        btnMyBooks1.setOnClickListener(this);
+        btnMyBooks2.setOnClickListener(this);
+        btnMyBooks3.setOnClickListener(this);
+        btnReturn.setOnClickListener(this);
     }
 
-    /*
-     * 方法名：initDatas()
-     * 功    能：初始化数据(包括适配器的初始化)
-     * 参    数：无
-     * 返回值：无
-     */
-    public void intiDatas() {
-        myFragments = new ArrayList<>();
-        myFragments.add(new Mybook1Fragment());
-        myFragments.add(new Mybook2Fragment());
-        myFragments.add(new Mybook3Fragment());
+    public void initDatas()
+    {
+        myBooksFragments = new ArrayList<>();
+        //将三个Fragment加入集合
+        myBooksFragments.add(new MyBooks1Fragment());
+        myBooksFragments.add(new MyBooks2Fragment());
+        myBooksFragments.add(new MyBooks3Fragment());
 
-        //初始化vp的adapter
-        myViewPagerAdapter = new FragmentPagerAdapter() {
+        //初始化适配器
+        myBooksPagerAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
-            public Fragment getItem(int position) {
-                return myFragments.get(position);
+            public android.support.v4.app.Fragment getItem(int position) {
+                //从集合中获取对应位置的Fragment
+                return myBooksFragments.get(position);
             }
 
             @Override
-            public int getCount() {
-                return myFragments.size();
+            public int getCount() {//获取集合中Fragment的总数
+                return myBooksFragments.size();
             }
-        }
+        };
+        //设置vp适配器
+        vpMyBooks.setAdapter(myBooksPagerAdapter);
 
-        //设置vp的adapter
-        myViewPager.setAdapter(myViewPagerAdapter);
-        //设置vp的切换监听
-        myViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener(){
+        vpMyBooks.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
+            //页面滚动事件
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            //页面选中事件
             public void onPageSelected(int position) {
-                resetButtons();//重置三个按钮
-                selectTab(position);//选择一个tab显示
+                vpMyBooks.setCurrentItem(position);
+                resetButtons();//按钮底色全部置浅色，上面的字全部置深色
+                selectTab(position);//被选中按钮底色置深色，上面的字置浅色
             }
 
             @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+            //页面滚动状态改变事件
+            public void onPageScrollStateChanged(int state) {
 
-            @Override
-            public void onPageScrollStateChanged(int state) {}
+            }
         });
     }
 
-    /*@重写onClick()方法
-     * 方法名：onClick(View v)
-     * 功    能：处理按钮点击事件
-     * 参    数：View v - 按钮的View
-     * 返回值：无
-     */
+
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            //根据点击的Tab切换不同的页面以及对应的ImageButton为主题色
+        switch (v.getId())
+        {
             case R.id.btn_mybooks_tab1:
-                resetButtons();//先将三个button置浅灰色
-                selectTab(0);//再选择tab0，对应的button高亮
+            {
+                resetButtons();
+                selectTab(0);
                 break;
+            }
             case R.id.btn_mybooks_tab2:
-                resetButtons();//先将三个button置浅灰色
-                selectTab(1);//再选择tab1，对应的button高亮
+            {
+                resetButtons();
+                selectTab(1);
                 break;
+            }
             case R.id.btn_mybooks_tab3:
-                resetButtons();//先将三个button置浅灰色
-                selectTab(2);//再选择tab2，对应的button高亮
+            {
+                resetButtons();
+                selectTab(2);
                 break;
-            //......
+            }
+            case R.id.btn_return_mybooks:
+            {
+                finish();
+                break;
+            }
         }
     }
 
-    /*
-     * 方法名：selectTab(int i)
-     * 功    能：选择底栏Tab对应的页面
-     * 参    数：int i - 所选择页面的index
-     * 返回值：无
-     */
-    public void selectTab(int i) {
-        //根据点击的Tab设置对应的Button为主题色
-        switch (i) {
+    public void resetButtons()
+    {
+        btnMyBooks1.setBackgroundColor(Color.parseColor("#f8f8f8"));
+        btnMyBooks2.setBackgroundColor(Color.parseColor("#f8f8f8"));
+        btnMyBooks3.setBackgroundColor(Color.parseColor("#f8f8f8"));
+        btnMyBooks1.setTextColor(Color.parseColor("#333333"));
+        btnMyBooks2.setTextColor(Color.parseColor("#333333"));
+        btnMyBooks3.setTextColor(Color.parseColor("#333333"));
+    }
+
+    public void selectTab(int position)
+    {
+        switch (position)
+        {
             case 0:
-                btnTab1.setBackgroundColor(R.color.colorPrimaryLight);
-                btnTab1.setTextColor(R.color.colorTextDark);
+                btnMyBooks1.setBackgroundColor(Color.parseColor("#333333"));
+                btnMyBooks1.setTextColor(Color.parseColor("#f8f8f8"));
                 break;
             case 1:
-                btnTab2.setBackgroundColor(R.color.colorPrimaryLight);
-                btnTab2.setTextColor(R.color.colorTextDark);
+                btnMyBooks2.setBackgroundColor(Color.parseColor("#333333"));
+                btnMyBooks2.setTextColor(Color.parseColor("#f8f8f8"));
                 break;
             case 2:
-                btnTab3.setBackgroundColor(R.color.colorPrimaryLight);
-                btnTab3.setTextColor(R.color.colorTextDark);
+                btnMyBooks3.setBackgroundColor(Color.parseColor("#333333"));
+                btnMyBooks3.setTextColor(Color.parseColor("#f8f8f8"));
                 break;
         }
-        //设置当前点击的Tab所对应的Fragment为Fragment数组里的第i项
-        myViewPager.setCurrentItem(i);
+        vpMyBooks.setCurrentItem(position);
     }
-
-    /*
-     * 方法名：resetImgs()
-     * 功    能：将三个Button设置为浅灰色
-     * 参    数：无
-     * 返回值：无
-     */
-    private void resetButtons() {
-        btnTab1.setTextColor(R.color.colorPrimaryLight);
-        btnTab1.setBackgroundColor(R.color.colorTextDark);
-        btnTab2.setTextColor(R.color.colorPrimaryLight);
-        btnTab2.setBackgroundColor(R.color.colorTextDark);
-        btnTab3.setTextColor(R.color.colorPrimaryLight);
-        btnTab3.setBackgroundColor(R.color.colorTextDark);
-    }
-
-    //自定义myBooksFragmentAdapter类
-//    public class BooksFragmentAdapter extends FragmentPagerAdapter {
-//        ArrayList<Fragment> booksFragments;
-//        public BooksFragmentAdapter(FragmentManager fm, ArrayList<Fragment> list) {
-//            super(fm);
-//            this.booksFragments = list;
-//        }
-//
-//        @Override
-//        public Fragment getItem(int position) {
-//            return booksFragments.get(position);
-//        }
-//
-//        @Override
-//        public int getCount() {
-//            return booksFragments.size();
-//        }
-//    };
-
 
     /*
      * @重写aty生命周期中的其它几个函数
@@ -229,4 +208,12 @@ public class MyBooksActivity extends Activity implements View.OnClickListener {
     protected void onDestroy() {
         super.onDestroy();
     }
+
 }
+
+/*
+* 注意
+* ①这里要导入的是import android.support.v4.app.Fragment;的fragment
+*   而不是android.app.Fragment
+*   因为ViewPager是import android.support.v4.app.Fragment
+* */

@@ -36,6 +36,10 @@
 
         <!--注册Activity-->
         <activity android:name=".aty.RegisterActivity">
+            <!--<intent-filter>-->
+            <!--<action android:name="android.intent.action.MAIN" />-->
+            <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
         </activity>
 
         <!--查词Activity-->
@@ -48,21 +52,35 @@
 
         <!--查单词本Activity-->
         <activity android:name=".aty.SearchBookActivity">
-
+            <!--<intent-filter>-->
+            <!--<action android:name="android.intent.action.MAIN" />-->
+            <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
         </activity>
 
         <!--查看单词本详细信息Activity-->
         <activity android:name=".aty.BookDetailActivity">
+            <!--<intent-filter>-->
+            <!--<action android:name="android.intent.action.MAIN" />-->
+            <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        </activity>
+
+        <!--查看我的单词本Activity-->
+        <activity android:name=".aty.MyBooksActivity">
             <intent-filter>
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <!--查看我的单词本Activity-->
-        <activity android:name=".aty.MyBooksActivity">
-
-        </activity>
+        <!--测试Aty-->
+        <!--<activity android:name=".aty.TestActivity">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        <!--</activity>-->
     </application>
 
 </manifest>
