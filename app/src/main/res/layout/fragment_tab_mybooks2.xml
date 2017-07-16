@@ -11,17 +11,27 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="400dp"
+            android:layout_height="match_parent"
             android:paddingLeft="20dp"
-            android:paddingRight="20dp">
+            android:paddingRight="20dp"
+            android:orientation="vertical">
 
             <ListView
-                android:id="@+id/lv_searchbook_result"
+                android:id="@+id/lv_mybooks_2"
                 android:layout_width="match_parent"
                 android:layout_height="400dp">
             </ListView>
 
         </LinearLayout>
+
     </ScrollView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:text="已加载全部"
+        android:textColor="@color/colorTextDark"
+        android:textAlignment="center"
+        android:gravity="center"/>
 
 </LinearLayout>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#ffffff"
+        android:orientation="vertical">
+
+        <!--头像-->
+        <com.example.words.util.CircleImageView
+            android:id="@+id/civAvatar"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="50dp"
+            android:layout_gravity="center"
+            android:src="@drawable/avatar_default"
+            app:civ_border_width="0dp"
+            app:civ_border_color="#333333"/>
+        <!--<com.example.slidingmenutest.CircleImageView-->
+            <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+            <!--android:id="@+id/civAvatar"-->
+            <!--android:layout_width="60dp"-->
+            <!--android:layout_height="60dp"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:layout_marginTop="60dp"-->
+            <!--android:background="#ffffff"-->
+            <!--android:src="@drawable/avatar_default"-->
+            <!--mCircleBorderWidth="10dp"-->
+            <!--mCircleBorderColor="#333333"-->
+            <!--mCircleBackgroundColor="#ffffff"/>-->
+
+        <!--用户名-->
+        <TextView
+            android:id="@+id/tvUsername"
+            android:text="admin"
+            android:textAllCaps="false"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="20dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="#333333">
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:background="#f8f8f8">
+
+    </LinearLayout>
+
+</LinearLayout>

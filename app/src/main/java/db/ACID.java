@@ -2,7 +2,7 @@ package db;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.*;
-import android.provider.MediaStore;
+import org.w3c.dom.Element;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -72,11 +72,33 @@ public class ACID {
         }
         return wd;
     }
-    public List<Word> getwordfromwb(String name,String laststring){
-        Cursor cursor,cursor1;
-        List<Word> list =new ArrayList<Word>();
-        ImportDB importdb = new ImportDB(context,name);
+    public List<Wordbook> getwordbooklist(String userstate){
+        Cursor cursor;
+        List<Wordbook> list =new ArrayList<Wordbook>();
+        ImportDB importdb = new ImportDB(context,"wordbooklist");
         SQLiteDatabase db = importdb.openDatabase(true);
+        cursor=db.rawQuery("select * from wordbooklist where usestate = ?",new String[]{userstate});
+        if(cursor.moveToFirst()){
+            Wordbook wd = new Wordbook();
+            wd.setCollectnumber(cursor.getInt(cursor.getColumnIndex("Collectnumber")));
+            wd.setDownnumber(cursor.getInt(cursor.getColumnIndex("Downnumber")));
+            wd.setPicture(cursor.getBlob(cursor.getColumnIndex("picture")));
+            wd.setAuthor(cursor.getString(cursor.getColumnIndex("author")));
+            wd.setName(cursor.getString(cursor.getColumnIndex("name")));
+            wd.setType(cursor.getString(cursor.getColumnIndex("type")));
+            wd.setWordnumber(cursor.getInt(cursor.getColumnIndex("wordnumber")));
+            wd.setState(cursor.getString(cursor.getColumnIndex("state")));
+            list.add(wd);
+        }
+        return list;
+    }
+    public List<Word> getwordfromwb(String name,String laststring){
+        Cursor cursor=null;
+        List<Word> list =new ArrayList<Word>();
+        ImportDB importdb = new ImportDB(context,name);//
+        ImportDB importdb1 = new ImportDB(context,"englishword");
+        SQLiteDatabase db = importdb.openDatabase(true);
+        SQLiteDatabase db1 = importdb1.openDatabase(true);
         int number = 0;
         if(db==null)return null;
         if(laststring==null){
@@ -88,11 +110,12 @@ public class ACID {
                 number=cursor.getInt(cursor.getColumnIndex("rowid"));
             }while (cursor.moveToNext());
         }}
-        cursor=db.rawQuery("select * from ? order by rowid desc limit ?,?",
-                new String[]{name,String.valueOf(number+1),String.valueOf(number+20)});
+        cursor=db.rawQuery("select * from "+name+" order by rowid desc limit ?,?"
+                ,new String[]{String.valueOf(number),String.valueOf(number+10)});
         if(cursor.moveToFirst()){
             do{
-                cursor1=db.rawQuery("select * from words where name = ?",
+                Cursor cursor1=null;
+                cursor1=db1.rawQuery("select * from words where Word = ?",
                         new String[]{cursor.getString(cursor.getColumnIndex("name"))});
                 if(cursor1.moveToFirst()){
                 do {
@@ -109,6 +132,8 @@ public class ACID {
             }while (cursor.moveToNext());
         }
         return list;
+    }
+    public void addxmlnode(String word){
     }
    void setContext(Context pcontext){
 	  context = pcontext; 

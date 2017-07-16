@@ -15,4 +15,17 @@
         <item name="android:layout_marginLeft">1.5dip</item>
         <item name="android:layout_marginRight">1.5dip</item>
     </style>
+
+    <declare-styleable name="CircleHead">
+        <attr name="circleBorderHeadWidth" format="dimension" />
+        <attr name="ringHeadColor" format="color" />
+        <attr name="backgroundHeadColor" format="color" />
+    </declare-styleable>
+
+    <!-- 选择照片底部弹出层 -->
+    <style name="PopupAnimation" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/push_bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/push_bottom_out</item>
+    </style>
+
 </resources>

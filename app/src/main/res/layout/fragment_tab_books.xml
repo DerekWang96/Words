@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:id="@+id/fragment_tab_books">
 
-    <include layout="@layout/custom_topbar_frag_books" />
+    <!--<include layout="@layout/custom_topbar_frag_books" />-->
     <include layout="@layout/custom_searchbook_static"/>
 
     <!--热门标签模块-->

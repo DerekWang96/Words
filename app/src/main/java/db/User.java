@@ -3,10 +3,10 @@ package db;
 import java.io.Serializable;
 
 public class User implements Serializable {
-    private static final long serialVersionUID = 1L;
-
+	private static final long serialVersionUID = 1L;
     public String UserID;
-    public String password ;
+    public String password;
+    public byte[] picture;
     public User(){}
 
     public String getUserID() {
@@ -17,6 +17,10 @@ public class User implements Serializable {
         return password;
     }
 
+    public byte[] getpicture() {
+    	return picture;
+    }
+    
     public void setPassword(String password) {
         this.password = password;
     }
@@ -25,5 +29,8 @@ public class User implements Serializable {
         UserID = userID;
     }
 
-
+    public void setpicture(byte[] picture){
+    	this.picture = picture;
+    }
+    
 }

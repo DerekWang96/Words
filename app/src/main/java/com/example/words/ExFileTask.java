@@ -23,7 +23,7 @@ public class ExFileTask extends AsyncTask<MessagePack, Void, MessagePack>{
     protected MessagePack doInBackground(MessagePack... params) {
         try {
 //            Socket socket = new Socket("10.0.3.2", 10001);
-            Socket socket = new Socket("223.3.107.94",10002);
+            Socket socket = new Socket("223.3.89.20",10002);
             DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
             FileInputStream fis = context.openFileInput(fileName);
 

@@ -28,7 +28,7 @@ public class ExDataTask extends AsyncTask<MessagePack, Void, MessagePack> {
             int i;
             int length = 0;
             byte[] inputByte = new byte[1024];
-            socket = new Socket("223.3.155.129",10001);
+            socket = new Socket("223.3.89.20",10001);
             System.out.println("socket:"+socket);
 //            ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
             DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
