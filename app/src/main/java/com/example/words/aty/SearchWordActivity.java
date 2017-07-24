@@ -3,6 +3,7 @@ package com.example.words.aty;
 import android.app.Activity;
 import com.example.words.R;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -39,6 +40,8 @@ public class SearchWordActivity extends Activity implements View.OnClickListener
 
     private Button btnAddWordToList;
 
+    private Intent intent;//用于截取要查询的单词
+
 
     /*相关函数--------------------------------------------------------*/
     //onCreate函数
@@ -48,9 +51,14 @@ public class SearchWordActivity extends Activity implements View.OnClickListener
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_searchword);
 
+        initDatas();//初始化数据
         initViews();//初始化界面
         initEvents();//初始化事件
-//        initDatas();//初始化数据
+
+    }
+
+    public void initDatas() {
+        intent = getIntent();
     }
 
     public void initViews() {
@@ -72,7 +80,6 @@ public class SearchWordActivity extends Activity implements View.OnClickListener
 
         //首先将查词结果不可见
         clearView();
-
     }
 
     //将查词结果不可见
@@ -87,6 +94,11 @@ public class SearchWordActivity extends Activity implements View.OnClickListener
     }
 
     public void initEvents() {
+        if (intent != null) {
+            String wordToCheck = intent.getStringExtra("wordToCheck");
+            searchWord(wordToCheck);
+        }
+
         btnReturn.setOnClickListener(this);
         btnSearchWord.setOnClickListener(this);
         btnWordSpeaker.setOnClickListener(this);
@@ -104,27 +116,9 @@ public class SearchWordActivity extends Activity implements View.OnClickListener
             }
             case R.id.btn_search_word://搜词
             {
-                clearView();
                 //获取搜索框内容
                 String wordToSearch = etInputWord.getText().toString();
-                //返回
-                ACID acid = new ACID(SearchWordActivity.this);
-                Word displayWord = acid.searchword(wordToSearch);
-                if (displayWord.getExample() == null) {
-                    tvWordNoResult.setVisibility(View.VISIBLE);
-                } else {
-                    tvWordSpelling.setText(displayWord.getSpelling());
-                    tvWordSoundmark.setText(displayWord.getSoundmark());
-                    tvWordMeaning.setText(displayWord.getParaphrase());
-                    tvWordExample.setText(displayWord.getExample());
-
-                    tvWordSpelling.setVisibility(View.VISIBLE);
-                    tvWordSoundmark.setVisibility(View.VISIBLE);
-                    btnWordSpeaker.setVisibility(View.VISIBLE);
-                    tvWordMeaning.setVisibility(View.VISIBLE);
-                    tvWordExample.setVisibility(View.VISIBLE);
-                    btnAddWordToList.setVisibility(View.VISIBLE);
-                }
+                searchWord(wordToSearch);
                 break;
             }
             case R.id.btn_word_speaker://发音
@@ -137,6 +131,28 @@ public class SearchWordActivity extends Activity implements View.OnClickListener
             }
             default:
                 break;
+        }
+    }
+
+    public void searchWord(String wordToSearch) {
+        clearView();
+        //返回
+        ACID acid = new ACID(SearchWordActivity.this);
+        Word displayWord = acid.searchword(wordToSearch);
+        if (displayWord.getExample() == null) {
+            tvWordNoResult.setVisibility(View.VISIBLE);
+        } else {
+            tvWordSpelling.setText(displayWord.getSpelling());
+            tvWordSoundmark.setText(displayWord.getSoundmark());
+            tvWordMeaning.setText(displayWord.getParaphrase());
+            tvWordExample.setText(displayWord.getExample());
+
+            tvWordSpelling.setVisibility(View.VISIBLE);
+            tvWordSoundmark.setVisibility(View.VISIBLE);
+            btnWordSpeaker.setVisibility(View.VISIBLE);
+            tvWordMeaning.setVisibility(View.VISIBLE);
+            tvWordExample.setVisibility(View.VISIBLE);
+            btnAddWordToList.setVisibility(View.VISIBLE);
         }
     }
 }

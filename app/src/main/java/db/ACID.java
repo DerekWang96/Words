@@ -111,7 +111,7 @@ public class ACID {
             }while (cursor.moveToNext());
         }}
         cursor=db.rawQuery("select * from "+name+" order by rowid desc limit ?,?"
-                ,new String[]{String.valueOf(number),String.valueOf(number+10)});
+                ,new String[]{String.valueOf(number),String.valueOf(number+20)});
         if(cursor.moveToFirst()){
             do{
                 Cursor cursor1=null;

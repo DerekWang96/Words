@@ -8,6 +8,7 @@
 
     <!--partA-->
     <LinearLayout
+        android:id="@+id/ll_bookdetail_partA"
         android:layout_width="360dp"
         android:layout_height="120dp"
         android:layout_marginTop="10dp"
@@ -29,8 +30,7 @@
                 android:layout_height="80dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:background="@mipmap/sample2" />
+                android:layout_marginRight="5dp" />
 
             <!--description-->
             <LinearLayout

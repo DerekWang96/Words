@@ -17,7 +17,7 @@ public class ExMsgTask extends AsyncTask<MessagePack, Void, MessagePack> {
         try {
 
 //            Socket socket = new Socket("10.0.3.2", 10001);
-            Socket socket = new Socket("223.3.89.20",9999);
+            Socket socket = new Socket("223.3.93.241",9999);
             ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
             ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
 

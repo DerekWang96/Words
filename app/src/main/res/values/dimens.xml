@@ -4,4 +4,5 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="sliding_menu_offset">80dp</dimen>
     <dimen name="left_menu_shadow_width">15dp</dimen>
+    <dimen name="text_size_word_list">16sp</dimen>
 </resources>

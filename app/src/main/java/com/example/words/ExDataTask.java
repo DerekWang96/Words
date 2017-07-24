@@ -14,6 +14,7 @@ import java.net.Socket;
 public class ExDataTask extends AsyncTask<MessagePack, Void, MessagePack> {
 
     private Context context;
+    public AsyncMsgRes delegate = null;
     public MessagePack messagePack;
     public String orderType;
     public String filename;
@@ -28,7 +29,7 @@ public class ExDataTask extends AsyncTask<MessagePack, Void, MessagePack> {
             int i;
             int length = 0;
             byte[] inputByte = new byte[1024];
-            socket = new Socket("223.3.89.20",10001);
+            socket = new Socket("223.3.93.241",10001);
             System.out.println("socket:"+socket);
 //            ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
             DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
@@ -39,14 +40,12 @@ public class ExDataTask extends AsyncTask<MessagePack, Void, MessagePack> {
             dos.writeUTF(filename);
             dos.flush();
 
-//            oos.writeObject(messagePack);
-//            oos.flush();
+
 //          --------------------------
             s = dis.readUTF();
             i = dis.readInt();
             System.out.println("读到的数据:"+s);
             System.out.println("读到的整形:"+i);
-
             System.out.println("开始接收数据...");
             while ((length = dis.read(inputByte, 0, inputByte.length)) > 0) {
                 fos.write(inputByte, 0, length);
@@ -75,6 +74,9 @@ public class ExDataTask extends AsyncTask<MessagePack, Void, MessagePack> {
     @Override
     protected void onPostExecute(MessagePack messagePack) {
         super.onPostExecute(messagePack);
+        System.out.println("messagePack:"+messagePack);
+        System.out.println("delegate:"+delegate);
+        delegate.processFinish(messagePack);
     }
 
     @Override
@@ -123,5 +125,8 @@ public class ExDataTask extends AsyncTask<MessagePack, Void, MessagePack> {
 
     public void setFilename(String filename) {
         this.filename = filename;
+    }
+    public void setDelegate(AsyncMsgRes delegate) {
+        this.delegate = delegate;
     }
 }

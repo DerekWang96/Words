@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_display_words"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryLight"
+    android:orientation="vertical">
+
+    <include layout="@layout/custom_topbar_with_return"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="已选："/>
+
+        <TextView
+            android:id="@+id/tv_number_of_words_to_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btn_delete_words"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/test_btn_shape1"
+            android:text="删除"/>
+    </LinearLayout>
+
+    <com.yydcdut.sdlv.SlideAndDragListView
+        android:id="@+id/sdlv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@color/colorTextHint"
+        android:listSelector="@drawable/list_selector"
+        android:dividerHeight="0.5dip">
+    </com.yydcdut.sdlv.SlideAndDragListView>
+
+</LinearLayout>

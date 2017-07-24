@@ -2,6 +2,7 @@ package com.example.words.aty;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -42,6 +43,7 @@ import db.Wordbook;
 public class SearchBookActivity extends Activity implements View.OnClickListener, AdapterView.OnItemClickListener,AsyncMsgRes {
 
     /*数据--------------------------------------------------------*/
+    private List<Wordbook> bookList;
     private ArrayList<String> bookTitles = new ArrayList<String>();//单词本搜索结果——标题
     private ArrayList<String> bookAuthors = new ArrayList<String>();//单词本搜索结果——作者
     private ArrayList<Bitmap> bookCovers = new ArrayList<Bitmap>();//单词本搜索结果——封面
@@ -145,6 +147,9 @@ public class SearchBookActivity extends Activity implements View.OnClickListener
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Toast.makeText(this, "item"+position, Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(SearchBookActivity.this,BookDetailActivity.class);
+        intent.putExtra("wordbook",bookList.get(position));
+        startActivity(intent);
     }
 
     //【工具函数】Bytes2Bitmap
@@ -345,7 +350,7 @@ public class SearchBookActivity extends Activity implements View.OnClickListener
     };
     @Override//回调函数
     public void processFinish(MessagePack outputPack) {
-        List<Wordbook> bookList = outputPack.getListwordbook();
+        bookList = outputPack.getListwordbook();
         System.out.println("bookList size:"+bookList.size());
         Resources res=getResources();
         Bitmap bitmap= BitmapFactory.decodeResource(res, R.drawable.defualtcover);
