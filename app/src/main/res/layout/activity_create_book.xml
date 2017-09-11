@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_create_book"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.words.aty.CreateBookActivity"
+    android:background="@color/white">
+
+    <include layout="@layout/custom_topbar_with_return"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+
+        <!--更换封面-->
+        <LinearLayout
+            android:id="@+id/ll_change_book_cover"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:background="#ffffff">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="更换封面"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+
+            <ImageView
+                android:id="@+id/iv_create_book_cover"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="center_vertical"
+                android:background="@mipmap/sample2"/>
+
+        </LinearLayout>
+
+        <!--分割线-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/colorTextHint"/>
+
+        <!--修改名称-->
+        <LinearLayout
+            android:id="@+id/ll_change_book_name"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:background="#ffffff">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="名称"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+
+            <EditText
+                android:id="@+id/et_create_book_name"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="4"
+                android:layout_marginEnd="10dp"
+                android:layout_gravity="center_vertical"
+                android:hint="请输入单词本名称"
+                android:textSize="14sp"
+                android:textColorHint="@color/colorTextHint"
+                android:textColor="@color/colorTextHint"
+                android:background="@null"
+                android:gravity="center|right"
+                android:focusable="true"
+                android:focusableInTouchMode="true"/>
+
+        </LinearLayout>
+
+        <!--分割线-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/colorTextHint"/>
+
+        <!--修改标签-->
+        <LinearLayout
+            android:id="@+id/ll_change_book_tag"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:background="#ffffff">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="标签"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="4"
+                android:layout_marginEnd="10dp"
+                android:layout_gravity="center_vertical"
+                android:text="请选择单词本标签"
+                android:textColor="@color/colorTextHint"
+                android:textSize="14sp"
+                android:gravity="center|right" />
+
+        </LinearLayout>
+
+        <!--分割线-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/colorTextHint"/>
+
+        <!--修改描述-->
+        <LinearLayout
+            android:id="@+id/ll_change_book_description"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:orientation="horizontal"
+            android:background="#ffffff">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="描述"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+
+            <EditText
+                android:id="@+id/et_create_book_description"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="4"
+                android:layout_marginEnd="10dp"
+                android:layout_gravity="center_vertical"
+                android:hint="请输入单词本描述"
+                android:inputType="textMultiLine"
+                android:textColorHint="@color/colorTextHint"
+                android:textColor="@color/colorTextHint"
+                android:textSize="14sp"
+                android:background="@null"
+                android:gravity="center|right"
+                android:focusable="true"
+                android:focusableInTouchMode="true"/>
+
+        </LinearLayout>
+
+        <!--分割线-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/colorTextHint"/>
+
+        <!--是否设置私密-->
+        <Switch
+            android:id="@+id/switch_whether_private"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="设为私密"
+            android:textColor="@color/colorTextHint"
+            android:textSize="14sp"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_finish_creating_book"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="完成"
+        android:textSize="14sp"
+        android:textColor="@color/colorTextDark"
+        android:background="@drawable/test_btn_shape1"/>
+</LinearLayout>

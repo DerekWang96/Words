@@ -22,16 +22,15 @@
                 android:layout_height="400dp">
             </ListView>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:text="已加载全部"
+                android:textColor="@color/colorTextDark"
+                android:textAlignment="center"
+                android:gravity="center"/>
         </LinearLayout>
 
     </ScrollView>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:text="已加载全部"
-        android:textColor="@color/colorTextDark"
-        android:textAlignment="center"
-        android:gravity="center"/>
 
 </LinearLayout>

@@ -4,14 +4,9 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.PictureDrawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
+//import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +17,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
-import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,13 +26,8 @@ import com.yydcdut.sdlv.Menu;
 import com.yydcdut.sdlv.MenuItem;
 import com.yydcdut.sdlv.SlideAndDragListView;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
-import java.util.PriorityQueue;
 
 import db.ACID;
 import db.Word;
@@ -48,7 +38,10 @@ public class DisplayWordsActivity extends Activity implements View.OnClickListen
     //控件
     private SlideAndDragListView slideAndDragListView;
     private ImageButton btnReturn;
+    private Button btnManage;
     private TextView tvTitle;
+    //隐藏控件
+    private LinearLayout llDisplayWordsManage;
     private TextView tvDeleteNumber;
     private Button btnDelete;
 
@@ -94,7 +87,10 @@ public class DisplayWordsActivity extends Activity implements View.OnClickListen
     protected void initViews() {
 
         btnReturn = (ImageButton) findViewById(R.id.btn_return);
+        btnManage = (Button) findViewById(R.id.btn_help);
         tvTitle = (TextView) findViewById(R.id.tv_topbar_title);
+        System.out.println(tvTitle);
+        llDisplayWordsManage = (LinearLayout) findViewById(R.id.ll_display_words_manage);
         tvDeleteNumber = (TextView) findViewById(R.id.tv_number_of_words_to_delete);
         btnDelete = (Button) findViewById(R.id.btn_delete_words);
 
@@ -109,6 +105,7 @@ public class DisplayWordsActivity extends Activity implements View.OnClickListen
     protected void initEvents() {
 
         btnReturn.setOnClickListener(this);
+        btnManage.setOnClickListener(this);
         btnDelete.setOnClickListener(this);
 
         /*设置各种监听器*/
@@ -242,6 +239,7 @@ public class DisplayWordsActivity extends Activity implements View.OnClickListen
                 convertView = LayoutInflater.from(DisplayWordsActivity.this).inflate(R.layout.wordlist_item,null);
                 //初始化控件
                 vh.checkBox = (CheckBox) convertView.findViewById(R.id.cb_check_word);
+                vh.checkBox.setVisibility(View.INVISIBLE);//初始化时cb不显示
                 vh.word = (TextView) convertView.findViewById(R.id.tv_wordlist_word);
                 //设置checkbox选中监听
 
@@ -265,9 +263,31 @@ public class DisplayWordsActivity extends Activity implements View.OnClickListen
             case R.id.btn_return:
                 finish();
                 break;
+            case R.id.btn_help:{
+                if (btnManage.getText().toString().equals("管理")) {
+                    btnManage.setText("退出管理");
+                    //取消隐藏
+                    showHiddenItems(new Boolean("flase"));
+                } else if (btnManage.getText().toString().equals("退出管理")) {
+                    btnManage.setText("管理");
+                    //隐藏
+                    showHiddenItems(new Boolean("true"));
+                }
+                break;
+            }
             case R.id.btn_delete_words:
                 //删除单词
                 break;
+        }
+    }
+
+    public void showHiddenItems(Boolean b) {
+        if (b) {
+            //取消隐藏
+            llDisplayWordsManage.setVisibility(View.VISIBLE);
+        } else {
+            //隐藏
+            llDisplayWordsManage.setVisibility(View.GONE);
         }
     }
 

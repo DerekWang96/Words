@@ -19,10 +19,16 @@ import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,7 +54,7 @@ import db.User;
  * Created by 6gold on 2017/2/28.
  */
 
-public class MainActivity extends FragmentActivity implements View.OnClickListener ,AsyncMsgRes {
+public class MainActivity extends FragmentActivity implements View.OnClickListener ,AsyncMsgRes, AdapterView.OnItemClickListener {
 
     /*成员变量--------------------------------------------------------*/
     private ViewPager myViewPager;                              //vp
@@ -57,6 +63,12 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private LinearLayout tabBooks, tabHome, tabPersonal;        //Fragments对应布局
     private ImageButton imgBtnBooks, imgBtnHome, imgBtnPersonal;//Fragments对应按钮
     private ImageButton btnOpenLeftMenu;                        //打开左侧抽屉按钮
+
+    private ListView menuListView;
+    private MenuListAdapter menuListAdapter;
+    private String [] menuList= {"个人中心","设置","菜单3"};
+
+    private ImageButton btnLogout;
 
     private Context mContext;
     private SlidingMenu menu;
@@ -130,6 +142,12 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         menu.attachToActivity(this,SlidingMenu.SLIDING_CONTENT);
         // 为滑动菜单设置布局
         menu.setMenu(R.layout.leftmenu);
+        btnLogout = (ImageButton) findViewById(R.id.btn_logout);
+        menuListView = (ListView) findViewById(R.id.lv_leftmenu_item);//菜单列表
+
+        //设置左滑菜单的菜单项
+        menuListAdapter = new MenuListAdapter(mContext,menuList);
+        menuListView.setAdapter(menuListAdapter);
 
         avatar = (CircleImageView) findViewById(R.id.civAvatar);
         username = (TextView) findViewById(R.id.tvUsername);
@@ -148,6 +166,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         tabPersonal.setOnClickListener(this);
         avatar.setOnClickListener(this);
         btnOpenLeftMenu.setOnClickListener(this);
+        btnLogout.setOnClickListener(this);
+        menuListView.setOnItemClickListener(this);
     }
 
     /*
@@ -223,6 +243,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 break;
             case R.id.btn_open_leftmenu:
                 menu.toggle();
+                break;
+            case R.id.btn_logout:
+                //登出
                 break;
             //......
         }
@@ -428,4 +451,69 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         Toast.makeText(getApplicationContext(),"上传头像成功",Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        switch(position) {
+            case 0:
+                //个人资料
+                Intent intent = new Intent(MainActivity.this,UserInformationActivity.class);
+                startActivity(intent);
+                break;
+            case 1:
+                //设置
+                break;
+            case 2:
+                break;
+            //......
+        }
+    }
+
+    //菜单列表适配器
+    class MenuListAdapter extends BaseAdapter {
+        private Context context;
+        private String[] menuList;
+
+        private LayoutInflater inflater;
+
+        public MenuListAdapter(Context context, String[] menuList) {
+            this.context = context;
+            this.menuList = menuList;
+            inflater = LayoutInflater.from(context);
+        }
+
+        @Override
+        public int getCount() {
+            return menuList.length;
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return menuList[position];
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            MenuViewHolder viewHolder = null;
+            if (convertView == null) {
+                convertView = inflater.inflate(R.layout.list_item_menu, null);
+                viewHolder = new MenuViewHolder();
+                viewHolder.tvOperation = (TextView) findViewById(R.id.tv_operation);
+                viewHolder.tvOperation.setText(menuList[position]);
+                convertView.setTag(viewHolder);
+            } else {
+                viewHolder = (MenuViewHolder) convertView.getTag();
+                viewHolder.tvOperation.setText(menuList[position]);
+            }
+            return convertView;
+        }
+    }
+
+    class MenuViewHolder {
+        TextView tvOperation;
+    }
 }

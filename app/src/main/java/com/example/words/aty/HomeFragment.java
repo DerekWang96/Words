@@ -165,6 +165,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             case R.id.ll_custom_serchbox_static:    //点击搜索区域
             {
                 Intent intent = new Intent(getActivity(),SearchWordActivity.class);
+                intent.putExtra("haswordtocheck","noword");
                 startActivity(intent);
                 break;
             }

@@ -49,13 +49,6 @@ public class BookDetailActivity extends Activity implements View.OnClickListener
     private ImageButton btn_test;           //测试
 
     private LinearLayout llBookdetailPartA;
-//    private TextView bookDescription;       //单词本描述
-//    private TextView learningProgress;      //学习进度
-//    private TextView avgWrong;              //平均错误率
-//    private TextView maxRight;              //最高正确率
-//    private TextView mostWrongWords;        //错误次数最多的词语
-
-
 
     /*相关函数--------------------------------------------------------*/
     /*@重写onCreate()方法
@@ -68,23 +61,15 @@ public class BookDetailActivity extends Activity implements View.OnClickListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);      //去掉头部
-        setContentView(R.layout.activity_bookdetail);       //设置layotu
+        setContentView(R.layout.activity_bookdetail);       //设置layout
         initDatas();    //初始化数据
         initViews();    //初始化控件
         initEvents();   //初始化事件
-//        initDatas();    //初始化数据
     }
 
     private void initDatas() {
         intent0 = getIntent();
         wordbook = (Wordbook) intent0.getSerializableExtra("wordbook");
-
-//        bookTitle = wordbook.getName();
-//        bookAuthor = wordbook.getAuthor();
-//        bookWordNumber = wordbook.getWordnumber();
-//        bookFavNumber = wordbook.getCollectnumber();
-//        bookDownNumber = wordbook.getDownnumber();
-//        bookCover = new BitmapByte().Bytes2Bimap(wordbook.getPicture());
     }
 
     /*
@@ -180,14 +165,18 @@ public class BookDetailActivity extends Activity implements View.OnClickListener
 
             case R.id.ll_bookdetail_partA:
             {
-                Intent intent = new Intent(BookDetailActivity.this,DisplayWordsActivity.class);
+                Intent intent = new Intent(BookDetailActivity.this,DisplayWordsActivity2.class);
                 intent.putExtra("wordbookName",wordbook.getName());
                 startActivity(intent);
+                break;
                 //判断本地是否有该单词本，若有，从本地读取，若无，联网读
             }
 
             case R.id.btn_bookdetail_review:        //复习按钮
             {
+                Intent intent = new Intent(BookDetailActivity.this,MemorizeWordsActivity.class);
+                intent.putExtra("wordbookTitle",wordbook.getName());
+                startActivity(intent);
                 break;
             }
 
@@ -202,7 +191,6 @@ public class BookDetailActivity extends Activity implements View.OnClickListener
             }
         }
     }
-
     /*
      * @重写aty生命周期中的其它几个函数
      */

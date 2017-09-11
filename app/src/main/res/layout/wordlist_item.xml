@@ -7,20 +7,21 @@
     android:orientation="horizontal"
     android:background="@drawable/item_selector">
 
-        <CheckBox
-            android:id="@+id/cb_check_word"
-            android:layout_width="35dp"
-            android:layout_height="35dp"/>
-
         <TextView
             android:id="@+id/tv_wordlist_word"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="15dp"
             android:gravity="center_vertical"
             android:text="testword"
             android:textColor="@color/colorTextDark"
             android:textSize="@dimen/text_size_word_list"/>
+
+        <CheckBox
+            android:id="@+id/cb_check_word"
+            android:layout_marginRight="15dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"/>
 
 </LinearLayout>

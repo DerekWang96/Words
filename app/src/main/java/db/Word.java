@@ -18,8 +18,34 @@ public class Word implements Serializable {
     public String meaning;//释义
     public byte[] pronounce;//发音
     public String example;//例子
+
+    public int familarity;//熟悉度
     public Word(){
 
+    }
+
+    public int getFamilarity() {
+        return familarity;
+    }
+
+    public void setFamilarity(int familarity) {
+        this.familarity = familarity;
+    }
+
+    public String getMeaning() {
+        return meaning;
+    }
+
+    public void setMeaning(String meaning) {
+        this.meaning = meaning;
+    }
+
+    public Word(String spelling, String soundmark, String meaning, String example) {
+        this.spelling = spelling;
+        this.soundmark = soundmark;
+
+        this.meaning = meaning;
+        this.example = example;
     }
     public void setSpelling(String spelling) {
        this.spelling = spelling;
@@ -52,6 +78,7 @@ public class Word implements Serializable {
     public String getExample() {
         return example;
     }
+
     public String getSoundmark() {
         return soundmark;
     }

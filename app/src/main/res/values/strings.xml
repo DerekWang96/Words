@@ -40,4 +40,10 @@
     <string name="search_book_hint">搜索单词本</string>
     <!--更多单词本-->
 
+    <!--示例单词-->
+    <string name="example_word_spelling">单词拼写</string>
+    <string name="example_word_soundmark">单词音标</string>
+    <string name="example_word_meaning">单词释义</string>
+    <string name="example_word_sentences">单词例句</string>
+
 </resources>

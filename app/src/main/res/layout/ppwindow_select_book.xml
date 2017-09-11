@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+        <!--单词本列表上方标题栏-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@color/colorPrimaryLight">
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="15dp"
+                android:background="@mipmap/folder3"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="25dp"
+                android:layout_marginLeft="10dp"
+                android:gravity="center_vertical"
+                android:text="添加到单词本"
+                android:textSize="14sp"/>
+            <LinearLayout
+                android:id="@+id/ll_create_new_wordbook"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:background="@mipmap/add"/>
+                <TextView
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="15dp"
+                    android:text="新建单词本"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!--单词本列表-->
+        <ListView
+            android:id="@+id/lv_select_from_mybooks"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:dividerHeight="0.5dp"
+            android:background="@color/colorPrimaryLight"
+            android:divider="@color/colorTextHint"/>
+
+        <!--单词本列表下方完成按钮-->
+        <Button
+            android:id="@+id/btn_finish_selecting_books"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="完成"
+            android:textSize="14sp"
+            android:background="@drawable/test_btn_shape1"/>
+
+</LinearLayout>

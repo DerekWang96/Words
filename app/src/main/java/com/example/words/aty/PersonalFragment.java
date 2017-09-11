@@ -17,7 +17,7 @@ import com.example.words.R;
 public class PersonalFragment extends Fragment {
 
     /*相关函数--------------------------------------------------------*/
-    @Nullable
+    @org.jetbrains.annotations.Nullable
     @Override
     public View onCreateView(LayoutInflater inflater,
                              @Nullable ViewGroup container,

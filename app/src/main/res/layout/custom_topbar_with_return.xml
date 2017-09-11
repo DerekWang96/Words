@@ -25,12 +25,15 @@
         android:textSize="18dp"
         android:textStyle="bold"/>
 
-    <ImageButton
+    <Button
+        android:id="@+id/btn_help"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginRight="10dp"
         android:layout_gravity="center"
         android:layout_alignParentLeft="true"
+        android:textSize="12sp"
+        android:textColor="@color/colorTextDark"
         android:scaleType="fitCenter"
         android:background="#00000000"/>
 </LinearLayout>

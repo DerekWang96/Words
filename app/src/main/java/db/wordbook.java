@@ -13,6 +13,33 @@ public class Wordbook implements Serializable {
 	private int wordnumber;
 	private String state;
 	private String type;
+	private  int Order;
+	private String discri;
+	public String getState() {
+		return state;
+	}
+
+	public void setOrder(int order) {
+		Order = order;
+	}
+
+	public String getDiscri() {
+		return discri;
+	}
+
+	public void setDiscri(String discri) {
+		this.discri = discri;
+	}
+
+	public boolean getPrim() {
+		return prim;
+	}
+
+	public void setPrim(boolean prim) {
+		this.prim = prim;
+	}
+
+	private boolean prim;
 	public int getCollectnumber() {
 		return collectnumber;
 	}
@@ -57,5 +84,7 @@ public class Wordbook implements Serializable {
 	}
 	public String getstate(){return state;}
 	public void setState(String state){this.state = state;}
+	public int getOrder(){return Order;}
+	public void setOrder(){this.Order=Order;}
 }
 

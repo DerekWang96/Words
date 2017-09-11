@@ -107,6 +107,7 @@ public class MyBooksActivity extends FragmentActivity implements View.OnClickLis
             @Override
             //页面选中事件
             public void onPageSelected(int position) {
+//                myBooksPagerAdapter.notifyDataSetChanged();
                 vpMyBooks.setCurrentItem(position);
                 resetButtons();//按钮底色全部置浅色，上面的字全部置深色
                 selectTab(position);//被选中按钮底色置深色，上面的字置浅色
