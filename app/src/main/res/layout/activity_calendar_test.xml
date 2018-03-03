@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context="com.example.words.aty.CalendarTestActivity">
+
+    <include layout="@layout/custom_topbar_with_return" android:id="@+id/calendar_topbar"/>
+
+    <!--当前年月-->
+    <RelativeLayout
+        android:id="@+id/rl_current_month"
+        android:layout_below="@+id/calendar_topbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp">
+
+        <TextView
+            android:id="@+id/tv_current_month"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:textSize="15sp"/>
+    </RelativeLayout>
+
+    <!--日历表头：星期X-->
+    <LinearLayout
+        android:id="@+id/rl_calendar_week"
+        android:layout_below="@+id/rl_current_month"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow>
+
+                <TextView
+                    style="@style/dateStyle"
+                    android:text="@string/monday"
+                    android:textColor="@color/font_default_color"/>
+
+                <TextView
+                    style="@style/dateStyle"
+                    android:text="@string/thesday"
+                    android:textColor="@color/font_default_color"/>
+
+                <TextView
+                    style="@style/dateStyle"
+                    android:text="@string/wednesday"
+                    android:textColor="@color/font_default_color"/>
+
+                <TextView
+                    style="@style/dateStyle"
+                    android:text="@string/thursday"
+                    android:textColor="@color/font_default_color"/>
+
+                <TextView
+                    style="@style/dateStyle"
+                    android:text="@string/friday"
+                    android:textColor="@color/font_default_color"/>
+
+                <TextView
+                    style="@style/dateStyle"
+                    android:text="@string/saturday"
+                    android:textColor="@color/font_default_color"/>
+
+                <TextView
+                    style="@style/dateStyle"
+                    android:text="@string/sunday"
+                    android:textColor="@color/font_default_color"/>
+
+            </TableRow>
+
+        </TableLayout>
+
+    </LinearLayout>
+
+    <!--具体日期-->
+    <RelativeLayout
+        android:layout_below="@+id/rl_calendar_week"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_calendar"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="10dp"/>
+
+        <LinearLayout
+            android:id="@+id/ll_calendar_drop"
+            android:layout_width="wrap_content"
+            android:layout_height="10dp"
+            android:layout_below="@+id/vp_calendar"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"/>
+
+        <!--累积签到天数-->
+        <LinearLayout
+            android:id="@+id/ll_total_sign_days"
+            android:layout_below="@+id/ll_calendar_drop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="25dp"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="已累计签到 "
+                android:textSize="14sp"
+                android:textColor="@color/font_default_color"/>
+
+            <TextView
+                android:id="@+id/tv_total_sign_days"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/font_default_color"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" 天"
+                android:textSize="14sp"
+                android:textColor="@color/font_default_color"/>
+
+        </LinearLayout>
+
+        <!--签到按钮-->
+        <Button
+            android:id="@+id/btn_sign"
+            android:layout_below="@+id/ll_total_sign_days"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/test_btn_shape2"
+            android:text="今日签到"
+            android:textSize="20sp"
+            android:textColor="@color/font_default_color"/>
+
+        <ImageView
+            android:id="@+id/iv_sign_succeed"
+            android:layout_below="@+id/btn_sign"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@mipmap/sign_succeed"
+            android:visibility="invisible"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

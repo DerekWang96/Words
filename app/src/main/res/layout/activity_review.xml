@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_memorize_words"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.words.aty.ReviewActivity">
+
+    <!-- part A : title -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="vertical"
+        android:background="@color/colorPrimaryLight">
+
+        <TextView
+            android:id="@+id/tv_memorize_spelling"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="quantitive"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorTextDark"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_memorize_soundmark"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:gravity="center_vertical"
+                android:text="['kwɔntitiv]"
+                android:textSize="14sp"
+                android:textColor="@color/colorTextDark"/>
+
+            <ImageButton
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="10dp"
+                android:background="@mipmap/btn_speaker"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!--默认提示界面-->
+    <TextView
+        android:id="@+id/tv_click_to_see"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="点击屏幕查看释义和例句"/>
+
+    <!-- part B : content -->
+    <LinearLayout
+        android:id="@+id/ll_memorize_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <!--释义-->
+        <TextView
+            android:id="@+id/memorize_content_part_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:text="adj. 定量的；数量的"
+            android:background="#eeeeee"/>
+
+        <!--例句-->
+        <ScrollView
+            android:id="@+id/memorize_content_part_2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/tv_memorize_examples"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/example_word_sentences"/>
+        </ScrollView>
+
+        <!-- buttons -->
+        <LinearLayout
+            android:id="@+id/memorize_content_part_3"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:background="@color/colorPrimaryLight">
+
+            <Button
+                android:id="@+id/btn_memorize_yes"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="center_vertical"
+                android:text="认识"
+                android:textSize="14sp"
+                android:background="@drawable/buttonstyle1"/>
+
+            <Button
+                android:id="@+id/btn_memorize_not_sure"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="center_vertical"
+                android:text="模糊"
+                android:textSize="14sp"
+                android:background="@drawable/buttonstyle1"/>
+
+            <Button
+                android:id="@+id/btn_memorize_no"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="center_vertical"
+                android:text="不认识"
+                android:textSize="14sp"
+                android:background="@drawable/buttonstyle1"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
